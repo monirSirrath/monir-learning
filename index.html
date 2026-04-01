@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Monir Learning System</title>
+  <style>
+    body { font-family: Arial; text-align: center; }
+    button { padding: 10px; margin: 10px; }
+    .hidden { display: none; }
+  </style>
+</head>
+
+<body>
+
+<h1>📚 Monir Learning Platform</h1>
+
+<!-- Provinces -->
+<div id="provinces">
+  <h2>Select Province</h2>
+  <button onclick="showColleges('balochistan')">Balochistan</button>
+  <button disabled>Punjab</button>
+  <button disabled>Sindh</button>
+  <button disabled>KPK</button>
+</div>
+
+<!-- Colleges -->
+<div id="colleges" class="hidden">
+  <h2>Balochistan Colleges</h2>
+  <button onclick="showClasses()">Cadet College</button>
+  <button onclick="showClasses()">Zamindar College</button>
+</div>
+
+<!-- Classes -->
+<div id="classes" class="hidden">
+  <h2>Select Class</h2>
+  <button onclick="showSubjects()">Class 6</button>
+  <button onclick="showSubjects()">Class 7</button>
+</div>
+
+<!-- Subjects -->
+<div id="subjects" class="hidden">
+  <h2>Subjects</h2>
+  <button onclick="startQuiz()">English</button>
+  <button onclick="startQuiz()">Urdu</button>
+</div>
+
+<!-- Quiz -->
+<div id="quiz" class="hidden">
+  <h2>Quiz</h2>
+  <p id="question"></p>
+  <button onclick="checkAnswer(1)">Option 1</button>
+  <button onclick="checkAnswer(2)">Option 2</button>
+  <button onclick="checkAnswer(3)">Option 3</button>
+  <p id="result"></p>
+</div>
+
+<!-- Game -->
+<div>
+  <h2>Kids Game 🎮</h2>
+  <button onclick="game()">Play Game</button>
+</div>
+
+<!-- About -->
+<div>
+  <h2>About</h2>
+  <p>This website helps students learn at home.</p>
+</div>
+
+<script>
+function showColleges() {
+  document.getElementById("provinces").classList.add("hidden");
+  document.getElementById("colleges").classList.remove("hidden");
+}
+
+function showClasses() {
+  document.getElementById("colleges").classList.add("hidden");
+  document.getElementById("classes").classList.remove("hidden");
+}
+
+function showSubjects() {
+  document.getElementById("classes").classList.add("hidden");
+  document.getElementById("subjects").classList.remove("hidden");
+}
+
+let correctAnswer = 2;
+
+function startQuiz() {
+  document.getElementById("subjects").classList.add("hidden");
+  document.getElementById("quiz").classList.remove("hidden");
+  document.getElementById("question").innerHTML = "What is 2 + 2?";
+}
+
+function checkAnswer(ans) {
+  if(ans == correctAnswer) {
+    document.getElementById("result").innerHTML = "✅ Correct!";
+  } else {
+    document.getElementById("result").innerHTML = "❌ Wrong!";
+  }
+}
+
+function game() {
+  let ans = prompt("🐱 What is this in English?");
+  if(ans.toLowerCase() == "cat") {
+    alert("Correct 🎉");
+  } else {
+    alert("Wrong ❌");
+  }
+}
+</script>
+
+</body>
+</html>
